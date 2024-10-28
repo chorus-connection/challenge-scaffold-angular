@@ -42,9 +42,15 @@ ng serve
 
 Update this README with anything we should know about your solution (including spin-up and testing instructions, if relevant).
 
-### Comments about the solution
+### Solution demonstration
+
+Run the app using the instruction above (make sure to run `npm ci`, as I have updated Angular to version 18). The app will be available at [`http://localhost:4200/`](http://localhost:4200/).
 
 To log into the app, please use `a@a` email and `a` password. For demo purposes, I have hard-coded this as only valid credentials.
+
+You can also check out the video demonstration [here](./chorus-connection-demo.mp4)
+
+### Comments about the solution
 
 #### Overview of things done
 
@@ -82,3 +88,9 @@ To log into the app, please use `a@a` email and `a` password. For demo purposes,
 #### Time constraint
 
 I found 2 hours to be a bit tight on time to satisfy all the requirements as well as some optional considerations. To be completely transparent, I spent 3 hours on the assignment. I have perhaps wasted a good chunk of the first hour, as I spent too much time on authentication. I then wrapped up the authentication and put it in gear for the rest of the app.
+
+#### Use of AI and other tools/documentation
+
+I used Github Copilot while coding. It sped me up a bit, as it mostly auto-completed trivial lines of code (such as CRUD methods from `ChorusesService`). I didn't use chatGPT or other tools.
+
+I used Angular's documentation and Angular Material documentation for some things I wasn't sure about and to do quick c/p from examples they have (e.g. for the responsive sidenav, as that is something I do relatively rarely so I don't know it fully by heart).
