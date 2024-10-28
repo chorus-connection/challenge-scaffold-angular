@@ -26,6 +26,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export default class MainLayoutComponent implements OnDestroy {
 	private readonly auth = inject(AuthService);
 	private readonly router = inject(Router);
+	protected readonly isLoggedIn = this.auth.isLoggedIn;
 	protected readonly mobileQuery: MediaQueryList;
 	private readonly _mobileQueryListener: () => void;
 

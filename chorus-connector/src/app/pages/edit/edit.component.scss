@@ -1,0 +1,12 @@
+:host {
+	display: block;
+	width: clamp(200px, 50dvw, 600px);
+	margin: 0 auto;
+}
+
+.actions {
+	display: flex;
+	align-items: center;
+	justify-content: end;
+	gap: 16px;
+}

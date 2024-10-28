@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { authGuard } from './guards/auth.guard';
 import { publicGuard } from './guards/public.guard';
+import { resolveChorus } from './guards/reslve-chorus.guard';
 
 const routes: Routes = [
 	{
@@ -11,12 +12,24 @@ const routes: Routes = [
 	},
 	{
 		path: 'home',
-		canMatch: [authGuard],
 		loadComponent: () => import('./layout/main-layout/main-layout.component'),
 		children: [
 			{
 				path: '',
 				loadComponent: () => import('./pages/home/home.component'),
+			},
+			{
+				path: 'create',
+				canMatch: [authGuard],
+				loadComponent: () => import('./pages/create/create.component'),
+			},
+			{
+				path: ':id',
+				canMatch: [authGuard],
+				resolve: {
+					chorus: resolveChorus,
+				},
+				loadComponent: () => import('./pages/edit/edit.component'),
 			},
 		],
 	},
@@ -34,7 +47,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes, { enableTracing: false })],
+	imports: [RouterModule.forRoot(routes, { bindToComponentInputs: true })],
 	exports: [RouterModule],
 })
 export class AppRoutingModule {}

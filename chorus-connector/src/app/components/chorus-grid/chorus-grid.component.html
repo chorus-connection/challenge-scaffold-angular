@@ -1,0 +1,25 @@
+<section class="choruses-grid" @skipInitialRender>
+	@for (chorus of choruses(); track chorus.id) {
+		<mat-card @enterLeave>
+			<mat-card-header>
+				<mat-card-title>{{ chorus.name }}</mat-card-title>
+				<mat-card-subtitle>
+					<mat-icon>location_on</mat-icon> {{ chorus.location.city }}, {{ chorus.location.state }}
+				</mat-card-subtitle>
+			</mat-card-header>
+
+			<img mat-card-image src="https://picsum.photos/300/150?random={{ chorus.id }}" />
+
+			<mat-card-content>
+				<p>{{ chorus.description }}</p>
+			</mat-card-content>
+
+			@if (isLoggedIn()) {
+				<mat-card-actions align="end">
+					<button mat-button color="warn" (click)="onDelete(chorus.id)">Delete</button>
+					<a mat-raised-button [routerLink]="['.', chorus.id]">Edit</a>
+				</mat-card-actions>
+			}
+		</mat-card>
+	}
+</section>

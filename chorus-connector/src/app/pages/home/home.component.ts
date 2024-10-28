@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { ChorusGridComponent } from '../../components/chorus-grid/chorus-grid.component';
 
 @Component({
 	selector: 'app-home',
 	standalone: true,
-	imports: [],
+	imports: [ChorusGridComponent],
 	templateUrl: './home.component.html',
 	styleUrl: './home.component.scss',
 })

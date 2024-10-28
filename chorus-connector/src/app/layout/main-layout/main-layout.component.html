@@ -3,7 +3,9 @@
 		<button mat-icon-button (click)="sideNav.toggle()">
 			<mat-icon>menu</mat-icon>
 		</button>
-		<h1 class="app-name">Chorus Connection</h1>
+		<a routerLink="/" class="home-link">
+			<h1 class="app-name">Chorus Connection</h1>
+		</a>
 	</mat-toolbar>
 
 	<mat-sidenav-container
@@ -18,9 +20,16 @@
 		>
 			<mat-nav-list>
 				<a mat-list-item routerLink="/">Home</a>
+				<a mat-list-item routerLink="/home/create">Add new chorus</a>
 			</mat-nav-list>
 
-			<button mat-flat-button color="warn" (click)="onLogOutClick()">Log out</button>
+			<section class="auth">
+				@if (isLoggedIn()) {
+					<button mat-flat-button color="warn" (click)="onLogOutClick()">Log out</button>
+				} @else {
+					<a mat-flat-button routerLink="/auth/login">Log in</a>
+				}
+			</section>
 		</mat-sidenav>
 
 		<mat-sidenav-content>
