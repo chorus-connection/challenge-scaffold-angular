@@ -1,0 +1,52 @@
+<form [formGroup]="form" #formRef="ngForm" (ngSubmit)="onSubmit()">
+	<h1>Welcome</h1>
+
+	<mat-form-field>
+		<mat-label>Email</mat-label>
+		<input matInput [formControl]="form.controls.email" />
+
+		@if (form.controls.email.hasError('required')) {
+			<mat-error>Email is required</mat-error>
+		}
+		@if (form.controls.email.hasError('email')) {
+			<mat-error>Invalid email</mat-error>
+		}
+	</mat-form-field>
+
+	<mat-form-field>
+		<mat-label>Password</mat-label>
+		<input
+			matInput
+			[formControl]="form.controls.password"
+			[type]="hidePassword() ? 'password' : 'text'"
+		/>
+
+		@if (form.controls.password.hasError('required')) {
+			<mat-error>Password is required</mat-error>
+		}
+
+		<button
+			mat-icon-button
+			matSuffix
+			type="button"
+			(click)="hidePassword.set(!hidePassword())"
+			[attr.aria-label]="'Toggle password visibility'"
+			[attr.aria-pressed]="hidePassword()"
+		>
+			<mat-icon>{{ hidePassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
+		</button>
+	</mat-form-field>
+
+	@if (form.hasError('invalidCredentials')) {
+		<mat-error>Invalid credentials</mat-error>
+	}
+
+	<button
+		mat-flat-button
+		color="primary"
+		type="submit"
+		[disabled]="formRef.submitted && formRef.invalid"
+	>
+		Log in
+	</button>
+</form>

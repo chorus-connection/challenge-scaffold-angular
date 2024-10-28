@@ -1,28 +1,30 @@
 <div class="container" [class.is-mobile]="mobileQuery.matches">
-  <mat-toolbar class="toolbar">
-    <button mat-icon-button (click)="sideNav.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <h1 class="app-name">Chorus Connection</h1>
-  </mat-toolbar>
+	<mat-toolbar class="toolbar">
+		<button mat-icon-button (click)="sideNav.toggle()">
+			<mat-icon>menu</mat-icon>
+		</button>
+		<h1 class="app-name">Chorus Connection</h1>
+	</mat-toolbar>
 
-  <mat-sidenav-container
-    class="sidenav-container"
-    [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
-  >
-    <mat-sidenav
-      #sideNav
-      [mode]="mobileQuery.matches ? 'over' : 'side'"
-      [fixedInViewport]="mobileQuery.matches"
-      fixedTopGap="56"
-    >
-      <mat-nav-list>
-        <a mat-list-item routerLink="/">Home</a>
-      </mat-nav-list>
-    </mat-sidenav>
+	<mat-sidenav-container
+		class="sidenav-container"
+		[style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+	>
+		<mat-sidenav
+			#sideNav
+			[mode]="mobileQuery.matches ? 'over' : 'side'"
+			[fixedInViewport]="mobileQuery.matches"
+			fixedTopGap="56"
+		>
+			<mat-nav-list>
+				<a mat-list-item routerLink="/">Home</a>
+			</mat-nav-list>
 
-    <mat-sidenav-content>
-      <router-outlet />
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+			<button mat-flat-button color="warn" (click)="onLogOutClick()">Log out</button>
+		</mat-sidenav>
+
+		<mat-sidenav-content>
+			<router-outlet />
+		</mat-sidenav-content>
+	</mat-sidenav-container>
 </div>
